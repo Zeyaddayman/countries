@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from "./providers/ThemeProvider";
 
-const inter = Inter({
+const NunitoSans = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"]
+  weight: ["300", "600", "800"]
 })
 
 export const metadata: Metadata = {
@@ -18,11 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} antialiased`}
+        className={`${NunitoSans.className} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

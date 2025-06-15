@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+:root {
+    --background: hsl(0, 0%, 99%);
+    --main-text-color: black;
+    --element-bg: hsl(0, 100%, 100%);
+    --text-color: hsl(200, 15%, 8%);
+    --input-bg: hsl(0, 0%, 50%);
+}
+
+html[class="dark"] {
+    --background: hsl(207, 26%, 17%);
+    --main-text-color: white;
+    --element-bg: hsl(209, 23%, 22%);
+    --text-color: hsl(0, 100%, 100%);
+    --input-bg: hsl(209, 23%, 22%);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-element-bg: var(--element-bg);
+    --color-text-color: var(--text-color);
+    --color-input-bg: var(--input-bg);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--main-text-color);
+}
+
+h2.heading {
+    @apply font-extrabold text-xl md:text-3xl
+}
+
+h1.country-name {
+    @apply font-medium text-2xl md:text-3xl
+}
+
+h3.card-country-name {
+    @apply font-medium text-xl
+}
+
+.container {
+    @apply mx-auto px-4 md:px-8
+}
