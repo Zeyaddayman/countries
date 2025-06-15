@@ -1,6 +1,7 @@
 "use client"
 
 import { useTheme } from "next-themes";
+import { IoMoon, IoMoonOutline } from "react-icons/io5";
 
 const ThemesSwitcher = () => {
 
@@ -11,13 +12,10 @@ const ThemesSwitcher = () => {
     }
 
     return (
-        <div>
-            {theme === "light" ? (
-                <p onClick={toggleTheme} className='bg-element-bg'>Enable Dark Mode</p>
-            ): (
-                <p onClick={toggleTheme} className='bg-element-bg'>Enable Light Mode</p>
-            )}
-        </div>
+        <button onClick={toggleTheme} className="px-3 py-2 md:px-6 md:py-4 flex items-center gap-2 cursor-pointer hover:bg-background transition rounded">
+            {theme === "light" ? <IoMoonOutline />: <IoMoon />}
+            Dark Mode
+        </button>
     )
 }
 
