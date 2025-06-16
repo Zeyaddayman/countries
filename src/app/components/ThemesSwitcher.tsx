@@ -13,7 +13,7 @@ const ThemesSwitcher = () => {
 
     return (
         <button onClick={toggleTheme} className="px-3 py-2 md:px-6 md:py-4 flex items-center gap-2 cursor-pointer hover:bg-background transition rounded">
-            {theme === "light" ? <IoMoonOutline />: <IoMoon />}
+            {theme === "light" ? <IoMoonOutline /> : <IoMoon />}
             Dark Mode
         </button>
     )
