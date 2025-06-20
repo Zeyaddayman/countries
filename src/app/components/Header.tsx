@@ -3,7 +3,7 @@ import ThemesSwitcher from "./ThemesSwitcher"
 
 const Header = () => {
     return (
-        <header className="py-8 bg-element-bg shadow-md">
+        <header className="py-8 bg-secondary-background shadow-md">
             <div className="container flex justify-between items-center">
                 <Link href={"/"} className="heading">
                     Where in the world?

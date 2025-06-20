@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 :root {
-    --background: hsl(0, 0%, 99%);
-    --main-text-color: black;
-    --element-bg: hsl(0, 100%, 100%);
-    --text-color: hsl(0, 0%, 60%);
+    --primary-background: hsl(0, 0%, 99%);
+    --primary-text-color: black;
+    --secondary-background: hsl(0, 100%, 100%);
+    --secondary-text-color: hsl(0, 0%, 60%);
 }
 
 html[class="dark"] {
-    --background: hsl(207, 26%, 17%);
-    --main-text-color: white;
-    --element-bg: hsl(209, 23%, 22%);
-    --text-color: hsl(0, 0%, 80%);
+    --primary-background: hsl(207, 26%, 17%);
+    --primary-text-color: white;
+    --secondary-background: hsl(209, 23%, 22%);
+    --secondary-text-color: hsl(0, 0%, 80%);
 }
 
 @theme inline {
-    --color-background: var(--background);
-    --color-element-bg: var(--element-bg);
-    --color-text-color: var(--text-color);
-    --color-input-bg: var(--input-bg);
+    --color-primary-background: var(--primary-background);
+    --color-primary-text-color: var(--primary-text-color);
+    --color-secondary-background: var(--secondary-background);
+    --color-secondary-text-color: var(--secondary-text-color);
 }
 
 body {
-    background-color: var(--background);
-    color: var(--main-text-color);
+    background-color: var(--primary-background);
+    color: var(--primary-text-color);
 }
 
 a.heading {

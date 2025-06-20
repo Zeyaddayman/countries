@@ -44,7 +44,7 @@ const Filters = () => {
                     id='search'
                     type='text'
                     placeholder='Search for a country...'
-                    className='p-3 pl-10 w-full bg-element-bg rounded outline-none shadow-md'
+                    className='p-3 pl-10 w-full bg-secondary-background rounded outline-none shadow-md'
                     defaultValue={searchParams.get('query')?.toString().toLowerCase()}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
@@ -55,7 +55,7 @@ const Filters = () => {
                 </label>
                 <select
                     id='filter'
-                    className='bg-element-bg shadow-md rounded p-3 w-full outline-none' 
+                    className='bg-secondary-background shadow-md rounded p-3 w-full outline-none' 
                     defaultValue={searchParams.get('region')?.toString().toLowerCase()}
                     onChange={(e) => handleRegion(e.target.value)}
                 >
