@@ -13,24 +13,24 @@ const Filters = () => {
         const params = new URLSearchParams(searchParams)
 
         if (!query) {
-            params.delete('query');
+            params.delete('query')
         } else {
-            params.set('query', query);
+            params.set('query', query)
         }
 
-        replace(`${pathname}?${params.toString()}`);
+        replace(`${pathname}?${params.toString()}`)
     }
 
     const handleRegion = (region: string) => {
         const params = new URLSearchParams(searchParams)
 
         if (region === 'all') {
-            params.delete('region');
+            params.delete('region')
         } else {
             params.set('region', region)
         }
 
-        replace(`${pathname}?${params.toString()}`);
+        replace(`${pathname}?${params.toString()}`)
     }
 
     return (
@@ -55,7 +55,7 @@ const Filters = () => {
                 </label>
                 <select
                     id='filter'
-                    className='bg-element-bg shadow-md p-3 w-full outline-none' 
+                    className='bg-element-bg shadow-md rounded p-3 w-full outline-none' 
                     defaultValue={searchParams.get('region')?.toString().toLowerCase()}
                     onChange={(e) => handleRegion(e.target.value)}
                 >

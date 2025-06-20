@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  nativeName     String
+  capital        String?
+  flags          Flags
+  population     BigInt
+  subregion      String
+  region         String
+  topLevelDomain String[]
+  currencies     Currency[]
+  languages      Language[]
+  borders        String[]
+
+  @@map("countries")
+}
+
+type Currency {
+  code   String
+  name   String
+  symbol String
+}
+
+type Language {
+  iso639_1   String?
+  iso639_2   String?
+  name       String
+  nativeName String?
+}
+
+type Flags {
+  svg String
+  png String
+}

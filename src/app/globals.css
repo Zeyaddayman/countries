@@ -4,16 +4,14 @@
     --background: hsl(0, 0%, 99%);
     --main-text-color: black;
     --element-bg: hsl(0, 100%, 100%);
-    --text-color: hsl(200, 15%, 8%);
-    --input-bg: hsl(0, 0%, 50%);
+    --text-color: hsl(0, 0%, 60%);
 }
 
 html[class="dark"] {
     --background: hsl(207, 26%, 17%);
     --main-text-color: white;
     --element-bg: hsl(209, 23%, 22%);
-    --text-color: hsl(0, 100%, 100%);
-    --input-bg: hsl(209, 23%, 22%);
+    --text-color: hsl(0, 0%, 80%);
 }
 
 @theme inline {
@@ -37,7 +35,7 @@ h1.country-name {
 }
 
 h3.card-country-name {
-    @apply font-medium text-xl
+    @apply font-medium text-xl my-5
 }
 
 .container {
