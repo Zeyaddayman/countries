@@ -10,9 +10,7 @@ export default async function Home({ searchParams }: Props) {
 
     const { query, region } = await searchParams
 
-    console.log(query, region)
-
-    let { countries } = await getCountriesByRegion(region || "all")
+    let countries = await getCountriesByRegion(region || "all")
 
     if (query) {
         countries = countries.filter(country => 

@@ -13,7 +13,7 @@ model Country {
   nativeName     String
   capital        String?
   flags          Flags
-  population     BigInt
+  population     Int
   subregion      String
   region         String
   topLevelDomain String[]
