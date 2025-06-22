@@ -16,7 +16,7 @@ export async function getCountriesByRegion(region: Country["region"]) {
     if (region === "All") {
 
         const countries = await cache(async (): Promise<Country[]> => {
-            
+
             return await prisma.country.findMany({
                 orderBy: {
                     name: "asc"
@@ -44,4 +44,23 @@ export async function getCountriesByRegion(region: Country["region"]) {
 
         return countries
     }
+}
+
+export async function getCountryById(id: Country["id"]) {
+
+    if (!id) {
+        throw new Error("Country ID is required")
+    }
+
+    const country = await prisma.country.findUnique({
+        where: {
+            id
+        }
+    })
+
+    if (!country) {
+        throw new Error(`Country with ID ${id} not found`)
+    }
+
+    return country
 }

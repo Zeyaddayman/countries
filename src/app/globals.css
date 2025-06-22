@@ -4,7 +4,7 @@
     --primary-background: hsl(0, 0%, 99%);
     --primary-text-color: black;
     --secondary-background: hsl(0, 100%, 100%);
-    --secondary-text-color: hsl(0, 0%, 60%);
+    --secondary-text-color: hsl(0, 0%, 40%);
 }
 
 html[class="dark"] {
@@ -31,7 +31,7 @@ a.heading {
 }
 
 h1.country-name {
-    @apply font-medium text-2xl md:text-3xl
+    @apply font-bold text-2xl md:text-3xl mb-4
 }
 
 h3.card-country-name {

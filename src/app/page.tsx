@@ -6,7 +6,7 @@ interface Props {
     searchParams: Promise<{ [key: string]: string }>
 }
 
-export default async function Home({ searchParams }: Props) {
+export default async function HomePage({ searchParams }: Props) {
 
     const { query, region } = await searchParams
 
