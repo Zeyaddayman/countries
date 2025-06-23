@@ -4,6 +4,14 @@ import prisma from "@/lib/prisma"
 import { Country } from "@prisma/client"
 import { unstable_cache as cache } from "next/cache"
 
+export async function getAllCountries() {
+    return await prisma.country.findMany({
+        orderBy: {
+            name: "asc"
+        }
+    })
+}
+
 export async function getCountriesByRegion(region: Country["region"]) {
 
     if (!region) {
@@ -15,15 +23,7 @@ export async function getCountriesByRegion(region: Country["region"]) {
 
     if (region === "All") {
 
-        const countries = await cache(async (): Promise<Country[]> => {
-
-            return await prisma.country.findMany({
-                orderBy: {
-                    name: "asc"
-                }
-            })
-
-        }, ["all-countries"])()
+        const countries = await cache(getAllCountries, ["all-countries"])()
 
         return countries
 

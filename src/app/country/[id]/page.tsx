@@ -1,4 +1,4 @@
-import { getCountryById } from "@/app/actions";
+import { getAllCountries, getCountryById } from "@/app/actions";
 import GobackBtn from "@/app/components/GobackBtn";
 import Image from "next/image";
 
@@ -6,8 +6,20 @@ interface Props {
     params: Promise<{ id: string }>
 }
 
-const CountryPage = async ({ params }: Props) => {
+export async function generateMetadata({ params }: Props) {
+    const { id } = await params
 
+    const country = await getCountryById(id)
+
+    if (!country) return { title: 'Country Not Found' }
+
+    return {
+        title: country.name,
+        description: `Details about ${country.name}`
+    }
+}
+
+const CountryPage = async ({ params }: Props) => {
     const { id } = await params
     const country = await getCountryById(id)
 
@@ -59,6 +71,15 @@ const CountryPage = async ({ params }: Props) => {
             </div>
         </main>
     )
+}
+
+export async function generateStaticParams() {
+    const countries = await getAllCountries()
+
+    return countries.map((country) => ({
+        id: country.id
+    }))
+
 }
 
 export default CountryPage;
