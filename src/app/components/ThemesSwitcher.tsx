@@ -1,7 +1,7 @@
 "use client"
 
 import { useTheme } from "next-themes";
-import { IoMoon, IoMoonOutline } from "react-icons/io5";
+import { IoMoon } from "react-icons/io5";
 
 const ThemesSwitcher = () => {
 
@@ -13,7 +13,7 @@ const ThemesSwitcher = () => {
 
     return (
         <button onClick={toggleTheme} className="px-3 py-2 md:px-6 md:py-4 flex items-center gap-2 cursor-pointer hover:bg-primary-background rounded">
-            {theme === "light" ? <IoMoonOutline /> : <IoMoon />}
+            <IoMoon fill={theme === "dark" ? "currentColor": "none"} strokeWidth={20} />
             Dark Mode
         </button>
     )
