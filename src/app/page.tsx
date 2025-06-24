@@ -1,6 +1,7 @@
 import { getCountriesByRegion } from "./actions";
 import CountriesList from "./components/CountriesList";
 import Filters from "./components/Filters";
+import ScrollToTop from "./components/ScrollToTop";
 
 interface Props {
     searchParams: Promise<{ [key: string]: string }>
@@ -23,6 +24,7 @@ export default async function HomePage({ searchParams }: Props) {
             <div className="container">
                 <Filters />
                 <CountriesList countries={countries} />
+                <ScrollToTop />
             </div>
         </main>
     )
