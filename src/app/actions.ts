@@ -2,9 +2,9 @@
 
 import prisma from "@/lib/prisma"
 import { Country } from "@prisma/client"
-import { unstable_cache as cache } from "next/cache"
+import { unstable_cache as next_cache } from "next/cache"
 
-export async function getAllCountries() {
+export async function getAllCountries(): Promise<Country[]> {
     return await prisma.country.findMany({
         orderBy: {
             name: "asc"
@@ -12,7 +12,7 @@ export async function getAllCountries() {
     })
 }
 
-export async function getCountriesByRegion(region: Country["region"]) {
+export async function getCountriesByRegion(region: Country["region"]): Promise<Country[]> {
 
     if (!region) {
         throw new Error("Region is required")
@@ -23,13 +23,13 @@ export async function getCountriesByRegion(region: Country["region"]) {
 
     if (region === "All") {
 
-        const countries = await cache(getAllCountries, ["all-countries"])()
+        const countries = await next_cache(getAllCountries, ["all-countries"])()
 
         return countries
 
     } else {
 
-        const countries = await cache(async (): Promise<Country[]> => {
+        const countries = await next_cache(async (): Promise<Country[]> => {
 
             return await prisma.country.findMany({
                 where: {
@@ -46,21 +46,24 @@ export async function getCountriesByRegion(region: Country["region"]) {
     }
 }
 
-export async function getCountryById(id: Country["id"]) {
+export async function getCountryById(id: Country["id"]): Promise<Country | null> {
 
     if (!id) {
         throw new Error("Country ID is required")
     }
 
-    const country = await prisma.country.findUnique({
-        where: {
-            id
-        }
-    })
+    try {
+        const country = next_cache(async () => {
+            return await prisma.country.findUnique({
+                where: {
+                    id
+                }
+            })
+        }, [`country-${id}`])()
 
-    if (!country) {
-        throw new Error(`Country with ID ${id} not found`)
+        return country
+
+    } catch {
+        throw new Error("Failed to fetch country")
     }
-
-    return country
 }

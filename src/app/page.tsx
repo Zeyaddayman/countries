@@ -7,6 +7,21 @@ interface Props {
     searchParams: Promise<{ [key: string]: string }>
 }
 
+export async function generateMetadata({ searchParams }: Props) {
+    let { region } = await searchParams
+
+    if (!region) return
+
+    region = region.charAt(0).toUpperCase() + region.slice(1).toLowerCase()
+
+    if (region) {
+        return {
+            title: `${region} - Countries`,
+            description: `Results for countries matching from ${region} region`
+        }
+    }
+}
+
 export default async function HomePage({ searchParams }: Props) {
 
     const { query, region } = await searchParams

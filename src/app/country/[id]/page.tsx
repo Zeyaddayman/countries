@@ -1,27 +1,39 @@
 import { getAllCountries, getCountryById } from "@/app/actions";
 import GobackBtn from "@/app/components/GobackBtn";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { cache as react_cache } from "react";
+
+// insted of getting the country from the database twice (metadata, page), we will cache the result
+const getCachedCountry = react_cache(getCountryById)
 
 interface Props {
     params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({ params }: Props) {
-    const { id } = await params
+    try {
+        const { id } = await params
 
-    const country = await getCountryById(id)
+        const country = await getCachedCountry(id)
 
-    if (!country) return { title: 'Country Not Found' }
+        if (!country) return { title: 'Country Not Found' }
 
-    return {
-        title: country.name,
-        description: `Details about ${country.name}`
+        return {
+            title: country.name,
+            description: `Details about ${country.name}`
+        }
+        
+    } catch {
+        return { title: 'Country Not Found' }
     }
 }
 
 const CountryPage = async ({ params }: Props) => {
     const { id } = await params
-    const country = await getCountryById(id)
+    const country = await getCachedCountry(id)
+
+    if (!country) notFound()
 
     return (
         <main className="py-10">
