@@ -53,15 +53,12 @@ export async function getCountryById(id: Country["id"]): Promise<Country | null>
     }
 
     try {
-        const country = next_cache(async () => {
-            return await prisma.country.findUnique({
-                where: {
-                    id
-                }
-            })
-        }, [`country-${id}`])()
-
-        return country
+        
+        return await prisma.country.findUnique({
+            where: {
+                id
+            }
+        })
 
     } catch {
         throw new Error("Failed to fetch country")

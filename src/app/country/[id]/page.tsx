@@ -12,20 +12,15 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-    try {
-        const { id } = await params
+    const { id } = await params
 
-        const country = await getCachedCountry(id)
+    const country = await getCachedCountry(id)
 
-        if (!country) return { title: 'Country Not Found' }
+    if (!country) return { title: 'Country Not Found' }
 
-        return {
-            title: country.name,
-            description: `Details about ${country.name}`
-        }
-        
-    } catch {
-        return { title: 'Country Not Found' }
+    return {
+        title: country.name,
+        description: `Details about ${country.name}`
     }
 }
 
