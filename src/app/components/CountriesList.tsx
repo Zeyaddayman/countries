@@ -7,6 +7,11 @@ interface Props {
 }
 
 const CountriesList = ({ countries }: Props) => {
+
+    if (countries.length < 1) return (
+        <p className="text-center font-semibold mt-10">No countries found.</p>
+    )
+
     return (
         <section className="mt-10 flex gap-10 flex-wrap justify-center">
             {countries.map((country) => (

@@ -47,20 +47,9 @@ export async function getCountriesByRegion(region: Country["region"]): Promise<C
 }
 
 export async function getCountryById(id: Country["id"]): Promise<Country | null> {
-
-    if (!id) {
-        throw new Error("Country ID is required")
-    }
-
-    try {
-        
-        return await prisma.country.findUnique({
-            where: {
-                id
-            }
-        })
-
-    } catch {
-        throw new Error("Failed to fetch country")
-    }
+    return await prisma.country.findUnique({
+        where: {
+            id
+        }
+    })
 }

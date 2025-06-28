@@ -16,8 +16,8 @@ export async function generateMetadata({ searchParams }: Props) {
 
     if (region) {
         return {
-            title: `${region} - Countries`,
-            description: `Results for countries matching from ${region} region`
+            title: `${region} Countries | World Countries Explorer`,
+            description: `List of countries in ${region} with detailed information`
         }
     }
 }

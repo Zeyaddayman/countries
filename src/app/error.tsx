@@ -3,17 +3,14 @@
 import Link from "next/link"
 
 export default function Error({
-    error,
     reset
 }: {
-    error: Error,
     reset: () => void
 }) {
     return (
         <div className="py-10 container text-center">
             <h1 className="font-bold text-4xl">500</h1>
             <h1 className="font-bold text-4xl my-5">Something Went Wrong</h1>
-            <p className="text-secondary-text-color font-semibold mb-5">{error.message}</p>
             <div className="flex gap-5 justify-center-safe">
                 <button
                     onClick={reset}

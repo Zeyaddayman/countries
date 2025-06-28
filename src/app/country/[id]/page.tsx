@@ -11,6 +11,8 @@ interface Props {
     params: Promise<{ id: string }>
 }
 
+export const dynamicParams = false
+
 export async function generateMetadata({ params }: Props) {
     const { id } = await params
 
@@ -19,8 +21,11 @@ export async function generateMetadata({ params }: Props) {
     if (!country) return { title: 'Country Not Found' }
 
     return {
-        title: country.name,
-        description: `Details about ${country.name}`
+        title: `${country.name} - Country Information | World Countries Explorer`,
+        description: `Detailed information about ${country.name}`,
+        openGraph: {
+            images: [country.flags.png]
+        }
     }
 }
 
@@ -86,7 +91,6 @@ export async function generateStaticParams() {
     return countries.map((country) => ({
         id: country.id
     }))
-
 }
 
 export default CountryPage;
