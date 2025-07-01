@@ -1,4 +1,4 @@
-import { Country } from "@prisma/client"
+import { Country } from "../../../prisma/generated/client"
 import Image from "next/image"
 import Link from "next/link"
 
