@@ -1,8 +1,8 @@
 "use server"
 
 import prisma from "@/lib/prisma"
+import { Country } from "@prisma/client"
 import { unstable_cache as next_cache } from "next/cache"
-import { Country } from "../../prisma/generated/client"
 
 export async function getAllCountries(): Promise<Country[]> {
     return await prisma.country.findMany({
