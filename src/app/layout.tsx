@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "World Countries Explorer",
     description: "Browse comprehensive data about every country in the world",
-    url: "https://world-countries-explorer-seven.vercel.app",
+    url: "https://world-countries-explorer-theta.vercel.app",
     siteName: "World Countries Explorer",
     images: [
       {
-        url: "https://world-countries-explorer-seven.vercel.app/images/world-countries-explorer-preview.png",
+        url: "https://world-countries-explorer-theta.vercel.app/images/world-countries-explorer-preview.png",
         width: 1200,
         height: 627
       }
